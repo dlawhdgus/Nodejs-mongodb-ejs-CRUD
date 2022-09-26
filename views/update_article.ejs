@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>update_article</h1>
+    <% result.forEach(arr => { %>
+        <form action="/update_board/<%- _id %>" method="post">
+            <p>title : <input name="title" type="text" value=<%- arr.title %>></p>
+            <p>nickname : <input name="nickname" type="text" value=<%- arr.nickname %>></p>
+            <p>body : <textarea name="body"><%- arr.body %></textarea></p>
+            <button type="submit">submit</button>
+        </form>
+    <% }) %>
+    <a href="/read_article">Back to read_article</a> | <a href="/">Go to Home</a>
+</body>
+</html>
