@@ -28,12 +28,15 @@ MongoClient.connect(config.MONGODB_CONNECT_STRING, function(err, db) {
     app.post('/board',(req,res) => {
         const {title,nickname,body} = req.body
         const filter = {}
-        if(title){
+        if(!title) {return res.status(400).send('title 입력 필수!')}
+        else{
             filter.title = title
             filter.createAt = new Date().toUTCString()
         }
-        if(nickname){filter.nickname = nickname}
-        if(body){filter.body = body}
+        if(!nickname) {return res.status(400).send('nickname 입력 필수!')}
+        else{filter.nickname = nickname}
+        if(!body) {return res.status(400).send('body 입력 필수!')}
+        else{filter.body = body}
 
         db_article.insertOne(filter,(err,result) => {
             if(err) throw err
@@ -78,14 +81,15 @@ MongoClient.connect(config.MONGODB_CONNECT_STRING, function(err, db) {
         const {_id} = req.params
         const {title,nickname,body} = req.body
         const filter = {}
-        if(title){
+        if(!title) {return res.status(400).send('title 입력 필수!')}
+        else{
             filter.title = title
             filter.createAt = new Date().toUTCString()
-        } else {
-            res.send("<script>alert('제목을 입력해 주세요.');history.back();</script>");
         }
-        if(nickname){filter.nickname = nickname}
-        if(body){filter.body = body}
+        if(!nickname) {return res.status(400).send('nickname 입력 필수!')}
+        else{filter.nickname = nickname}
+        if(!body) {return res.status(400).send('body 입력 필수!')}
+        else{filter.body = body}
         db_article.updateOne({_id : mongodb.ObjectId(_id)},{$set : filter},(err,result) => {
             if(err) throw err
             res.redirect('/read_article')
@@ -110,8 +114,10 @@ MongoClient.connect(config.MONGODB_CONNECT_STRING, function(err, db) {
         })
         
     })
+    app.listen(port, ()=> {
+      console.log('server on!!')
+    })
+    app.get((req,res) => {
+        res.status(404).send('not found!!!')
+    })
 });
-
-app.listen(port, ()=> {
-  console.log('server on!!')
-})
