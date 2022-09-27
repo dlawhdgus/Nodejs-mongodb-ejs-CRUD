@@ -28,12 +28,12 @@ MongoClient.connect(config.MONGODB_CONNECT_STRING, function(err, db) {
     app.post('/board',(req,res) => {
         const {title,nickname,body} = req.body
         const filter = {}
-        if(title){filter.title = title}
-        if(nickname){filter.nickname = nickname}
-        if(body){
-            filter.body = body
-            filter.createAt = new Date()
+        if(title){
+            filter.title = title
+            filter.createAt = new Date().toUTCString()
         }
+        if(nickname){filter.nickname = nickname}
+        if(body){filter.body = body}
 
         db_article.insertOne(filter,(err,result) => {
             if(err) throw err
@@ -43,6 +43,16 @@ MongoClient.connect(config.MONGODB_CONNECT_STRING, function(err, db) {
 
     app.get('/read_article',(req,res) => {
         db_article.find({},{projection : {}}).toArray((err,result) => {
+            if(err) throw err
+            res.render('read_article',{result})
+        })
+    })
+
+    app.get('/read_filter_article',(req,res) => {
+        const {title} = req.query
+        const filter = {}
+        if(title){filter.title = title}
+        db_article.find(filter,{projection : {_id : 0, title : 1}}).toArray((err,result) => {
             if(err) throw err
             res.render('read_article',{result})
         })
@@ -68,12 +78,14 @@ MongoClient.connect(config.MONGODB_CONNECT_STRING, function(err, db) {
         const {_id} = req.params
         const {title,nickname,body} = req.body
         const filter = {}
-        if(title){filter.title = title}
-        if(nickname){filter.nickname = nickname}
-        if(body){
-            filter.body = body
-            filter.createAt = new Date()
+        if(title){
+            filter.title = title
+            filter.createAt = new Date().toUTCString()
+        } else {
+            res.send("<script>alert('제목을 입력해 주세요.');history.back();</script>");
         }
+        if(nickname){filter.nickname = nickname}
+        if(body){filter.body = body}
         db_article.updateOne({_id : mongodb.ObjectId(_id)},{$set : filter},(err,result) => {
             if(err) throw err
             res.redirect('/read_article')
@@ -87,6 +99,16 @@ MongoClient.connect(config.MONGODB_CONNECT_STRING, function(err, db) {
             if(err) throw err
             res.redirect('/read_article')
         })
+    })
+
+    app.post('/delete_admin_article',(req,res) => {
+        const {pw} = req.body
+        console.log(pw)
+        db_article.find({},{projection : {}}).toArray((err,result) => {
+            if(err) throw err
+            res.render('read_admin_article',{result})
+        })
+        
     })
 });
 
