@@ -13,8 +13,13 @@
             <p>title : <input name="title" type="text" value=<%- arr.title %>></p>
             <p>nickname : <input name="nickname" type="text" value=<%- arr.nickname %>></p>
             <p>body : <textarea name="body"><%- arr.body %></textarea></p>
-            <button type="submit">submit</button>
+            <p>createAt : <%- arr.createAt %></p>
+            <button type="submit">update</button>
         </form>
+        <form action="../delete_article/<%- arr._id %>" method="post">
+                <button type="submit">delete</button>
+        </form>
+        
     <% }) %>
     <a href="/read_article">Back to read_article</a> | <a href="/">Go to Home</a>
 </body>

@@ -37,7 +37,7 @@ MongoClient.connect(config.MONGODB_CONNECT_STRING, function(err, db) {
 
         db_article.insertOne(filter,(err,result) => {
             if(err) throw err
-            res.redirect('/')
+            res.redirect('/read_article')
         })
     })
 
@@ -76,7 +76,7 @@ MongoClient.connect(config.MONGODB_CONNECT_STRING, function(err, db) {
         }
         db_article.updateOne({_id : mongodb.ObjectId(_id)},{$set : filter},(err,result) => {
             if(err) throw err
-            res.redirect('/')
+            res.redirect('/read_article')
         })
         
     })

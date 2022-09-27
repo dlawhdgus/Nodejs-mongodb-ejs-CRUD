@@ -6,7 +6,8 @@
   "main": "index.ejs",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "build" : "webpack"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +15,7 @@
     "body-parser": "^1.20.0",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
+    "gh-pages": "^4.0.0",
     "mongodb": "^4.10.0"
   }
 }

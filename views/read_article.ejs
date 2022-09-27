@@ -9,12 +9,7 @@
 <body>
     <h1>read_article</h1>
     <% result.forEach(arr => { %>
-        <p>title : <%- arr.title %></p>
-        <form action="delete_article/<%- arr._id %>" method="post">
-            <a href="/read_article/<%- arr._id %>">show all</a>
-            <a href="/update_article/<%- arr._id %>">update</a>
-            <button type="submit">delete</button>
-        </form>
+        <a href="/update_article/<%- arr._id %>">title : <%- arr.title %></a>
         <hr>
     <% }) %>
     <a href="/">Go to Home</a>
