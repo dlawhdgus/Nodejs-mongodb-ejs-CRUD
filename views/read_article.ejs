@@ -12,7 +12,7 @@
         검색 : <input type="search" name="title" placeholder="title">
     </form>
     <% result.forEach(arr => { %>
-        <div><a href="/update_article/<%- arr._id %>">title : <%- arr.title %></a>createAt : <%- arr.createAt %></div>
+        <div><a href="../update_article/<%- arr._id %>">title : <%- arr.title %></a>createAt : <%- arr.createAt %></div>
         <hr>
     <% }) %>
     <a href="/">Go to Home</a> | <a href="/read_article">Go to read_article</a>
