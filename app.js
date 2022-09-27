@@ -117,7 +117,21 @@ MongoClient.connect(config.MONGODB_CONNECT_STRING, function(err, db) {
     app.listen(port, ()=> {
       console.log('server on!!')
     })
-    app.get((req,res) => {
-        res.status(404).send('not found!!!')
-    })
+
+    app.use((req,res,next) => {res.status(404).send(`
+    not found!!
+    not found!!
+    not found!!
+    not found!!
+    not found!!
+    not found!!
+    not found!!
+    not found!!
+    not found!!
+    not found!!
+    not found!!
+    not found!!
+    not found!!
+    not found!!
+    `)})
 });
