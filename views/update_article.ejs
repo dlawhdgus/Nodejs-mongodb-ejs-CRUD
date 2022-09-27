@@ -9,8 +9,8 @@
 <body>
     <% result.forEach(arr => { %>
         <form action="/update_board/<%- _id %>" method="post">
-            <p>title : <input name="title" type="text" value=<%- arr.title %>></p>
-            <p>nickname : <input name="nickname" type="text" value=<%- arr.nickname %>></p>
+            <p>title : <input name="title" type="text" value="<%- arr.title %>"></p>
+            <p>nickname : <input name="nickname" type="text" value="<%- arr.nickname %>"></p>
             <p>body : <textarea name="body"><%- arr.body %></textarea></p>
             <p>createAt : <%- arr.createAt %></p>
             <button type="submit">update</button>
