@@ -51,15 +51,7 @@ MongoClient.connect(config.MONGODB_CONNECT_STRING, function(err, db) {
         })
     })
 
-    app.get('/read_filter_article',(req,res) => {
-        const {title} = req.query
-        const filter = {}
-        if(title){filter.title = title}
-        db_article.find(filter,{projection : {_id : 0, title : 1}}).toArray((err,result) => {
-            if(err) throw err
-            res.render('read_article',{result})
-        })
-    })
+
 
     app.get('/read_article/:_id',(req,res) => {
         const {_id} = req.params
@@ -132,6 +124,6 @@ MongoClient.connect(config.MONGODB_CONNECT_STRING, function(err, db) {
     not found!!
     not found!!
     not found!!
-    not found!!
+    
     `)})
 });

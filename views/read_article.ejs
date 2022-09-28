@@ -5,14 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>read_article</title>
+    <link href="/css/read_article.css" rel="stylesheet">
 </head>
 <body>
-    <a href="/create_article">Go to read_article</a>
-    <form action="/read_filter_article" method="get">
-        검색 : <input type="search" name="title" placeholder="title">
-    </form>
+    <a href="/create_article">Go to read_article</a><br>
     <% result.forEach(arr => { %>
-        <div><a href="../update_article/<%- arr._id %>">title : <%- arr.title %></a>createAt : <%- arr.createAt %></div>
+        <a href="../update_article/<%- arr._id %>">title : <%- arr.title %></a><a id="read_createAt">createAt : <%- arr.createAt %></p>
         <hr>
     <% }) %>
     <a href="/">Go to Home</a> | <a href="/read_article">Go to read_article</a>
