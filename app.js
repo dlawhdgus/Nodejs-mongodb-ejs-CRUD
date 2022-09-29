@@ -6,11 +6,13 @@ const mongodb = require('mongodb')
 const bodyParser = require('body-parser')
 const MongoClient = require('mongodb').MongoClient
 
-app.set('view engine','ejs')
-app.set('views','./views')
-
 app.use(bodyParser.json())
 app.use(express.urlencoded({extended : false}));
+app.use(express.static(__dirname + '/public'))
+
+app.set('views','./public/views')
+app.set('view engine','ejs')
+
 
 MongoClient.connect(config.MONGODB_CONNECT_STRING, function(err, db) {
     if (err) throw err;
@@ -110,5 +112,6 @@ MongoClient.connect(config.MONGODB_CONNECT_STRING, function(err, db) {
       console.log('server on!!')
     })
 
-    app.use((req,res,next) => {res.status(404).send(`not found!!`)})
+    app.use((req,res,next) => {res.sendStatus(404)})
+    app.use((err,req,res,next) => {res.sendStatus(500)})
 });

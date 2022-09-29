@@ -1,0 +1,21 @@
+body{
+    padding-left: 150px;
+    padding-right: 150px;
+}
+div{
+    padding-bottom: 10px;
+}
+#title{
+    width: 99%;
+    height: 30px;
+    text-indent: 10px;
+}
+#nickname{
+    width: 99%;
+    text-indent: 10px;
+}
+#body{
+    width: 99%;
+    height: 500px;
+    text-indent: 10px;
+}
