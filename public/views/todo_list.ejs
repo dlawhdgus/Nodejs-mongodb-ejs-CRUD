@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO-LIST</title>
+    <link rel="stylesheet" type="text/css" href="/css/create_article.css">
+</head>
+<body>
+    <form action="/create_list" method="post">
+        <h1>create_todo-list</h1>
+        <button type="submit">등록</button>
+        <hr>
+        <div><input id="title" type="text" placeholder="할 것을 입력하세요" name="list" autofocus></div>
+        <hr>
+    </form>
+    <% result.forEach(arr => { %>
+        할 것 : <%- arr.list %>
+        createAt : <%- arr.createAt %>
+        <hr>
+    <% }) %>
+    <a href="/">Go to Home</a>
+</body>
+</html>

@@ -10,7 +10,7 @@
 <body>
     <a href="/create_article">Go to read_article</a><br>
     <% result.forEach(arr => { %>
-        <a href="../update_article/<%- arr._id %>">title : <%- arr.title %></a><a class="createAt">createAt : <%- arr.createAt %></a>
+        <a href="../update_article/<%- arr._id %>">title : <%- arr.title %></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;createAt : <%- arr.createAt %>
         <hr>
     <% }) %>
     <a href="/">Go to Home</a> <a>|</a> <a href="/read_article">Go to read_article</a>
