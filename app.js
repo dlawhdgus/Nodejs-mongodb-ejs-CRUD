@@ -27,6 +27,13 @@ MongoClient.connect(config.MONGODB_CONNECT_STRING, function(err, db) {
             res.status(500).send('Internal Server Error')
         }
     })
+    app.get('/riot.txt', (req,res) => {
+        try {
+            res.send('34d0928e-b590-4c76-84ba-0947c813bffe')
+        } catch (e) {
+            
+        }
+    })
 
     app.get('/create_article',(req,res) => {
         try {
