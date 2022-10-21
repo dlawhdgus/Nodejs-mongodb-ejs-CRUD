@@ -29,7 +29,7 @@ MongoClient.connect(config.MONGODB_CONNECT_STRING, function(err, db) {
     })
     app.get('/riot.txt', (req,res) => {
         try {
-            res.send('34d0928e-b590-4c76-84ba-0947c813bffe')
+            res.json('34d0928e-b590-4c76-84ba-0947c813bffe')
         } catch (e) {
             
         }
